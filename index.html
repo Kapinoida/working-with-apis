@@ -11,15 +11,10 @@
     const img = document.querySelector('img');
     const button = document.querySelector('button')
 
-    function newCat() {
-
-      fetch('https://api.giphy.com/v1/gifs/translate?api_key=3nCDxg8tFdQyPoG3rXXbJAwhXdilY6fv&s=cats', {mode: 'cors'})
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        img.src = response.data.images.original.url;
-      });
+    async function newCat() {
+      const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=3nCDxg8tFdQyPoG3rXXbJAwhXdilY6fv&s=cats', {mode: 'cors'})
+      const catData = await response.json();
+      img.src = catData.data.images.original.url;
 
     }
 
